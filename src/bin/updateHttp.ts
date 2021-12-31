@@ -2,7 +2,7 @@ import { NS } from "/../NetscriptDefinitions.js";
 import { Logger } from "/lib/log.js";
 import { buildNetscriptFlagsArray, buildUsageString, Flag } from "/lib/usage.js";
 
-const MANIFEST_URL = ""
+const MANIFEST_URL = "https://github.com/jojotastic777/bitburner-scripts/raw/main/data/http-updater-manifest.json"
 
 type FilePath = string
 type FileURL  = string

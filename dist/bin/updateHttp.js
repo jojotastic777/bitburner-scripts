@@ -1,6 +1,6 @@
 import { Logger } from "/lib/log.js";
 import { buildNetscriptFlagsArray, buildUsageString } from "/lib/usage.js";
-const MANIFEST_URL = "";
+const MANIFEST_URL = "https://github.com/jojotastic777/bitburner-scripts/raw/main/data/http-updater-manifest.json";
 const FLAGS = [
     { name: "notext", default: false, description: "Silences text output." },
     { name: "notoast", default: false, description: "Silences toast output." },
