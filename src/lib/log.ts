@@ -46,7 +46,7 @@ export class Logger {
             this.ns.tprintf(`[DEBUG] [${this.name}]: ${msg}`)
         }
 
-        global.data.logService?.messageQueue.push({ programName: this.name, logLevel: "debug", msg, timestamp: Date.now(), sessionStart: this.sessionStart })
+        global.data.logService?.messageQueue?.push({ programName: this.name, logLevel: "debug", msg, timestamp: Date.now(), sessionStart: this.sessionStart })
     }
 
     public info(msg: string): void {
@@ -54,7 +54,7 @@ export class Logger {
             this.ns.tprintf(`[INFO] [${this.name}]: ${msg}`)
         }
 
-        global.data.logService?.messageQueue.push({ programName: this.name, logLevel: "info", msg, timestamp: Date.now(), sessionStart: this.sessionStart })
+        global.data.logService?.messageQueue?.push({ programName: this.name, logLevel: "info", msg, timestamp: Date.now(), sessionStart: this.sessionStart })
     }
 
     public warn(msg: string): void {
@@ -62,7 +62,7 @@ export class Logger {
             this.ns.tprintf(`[WARN] [${this.name}]: ${msg}`)
         }
 
-        global.data.logService?.messageQueue.push({ programName: this.name, logLevel: "warn", msg, timestamp: Date.now(), sessionStart: this.sessionStart })
+        global.data.logService?.messageQueue?.push({ programName: this.name, logLevel: "warn", msg, timestamp: Date.now(), sessionStart: this.sessionStart })
     }
 
     public error(msg: string): void {
@@ -70,6 +70,6 @@ export class Logger {
             this.ns.tprintf(`[ERROR] [${this.name}]: ${msg}`)
         }
 
-        global.data.logService?.messageQueue.push({ programName: this.name, logLevel: "error", msg, timestamp: Date.now(), sessionStart: this.sessionStart })
+        global.data.logService?.messageQueue?.push({ programName: this.name, logLevel: "error", msg, timestamp: Date.now(), sessionStart: this.sessionStart })
     }
 }
