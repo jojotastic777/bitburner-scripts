@@ -749,11 +749,6 @@ readdirp@~3.6.0:
   dependencies:
     picomatch "^2.2.1"
 
-recursive-readdir-async@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/recursive-readdir-async/-/recursive-readdir-async-1.2.0.tgz#530b4a011bf6635cf378192ec144885009233cb2"
-  integrity sha512-Gk6iOlS2lpRaG8rvaKVB4Qdgjcrxr1Gi89yL5ygEGJyMy99mXkIpveal8HIJ+pJh8cSV+sMd9UYh6QtyVmxmWg==
-
 regexpp@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/regexpp/-/regexpp-3.2.0.tgz#0425a2768d8f23bad70ca4b90461fa2f1213e1b2"

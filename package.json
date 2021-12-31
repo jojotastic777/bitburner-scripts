@@ -22,7 +22,6 @@
   "homepage": "https://github.com/jojotastic777/bitburner-scripts#readme",
   "dependencies": {
     "chokidar": "^3.5.2",
-    "recursive-readdir-async": "^1.2.0",
     "ws": "^8.4.0"
   },
   "devDependencies": {

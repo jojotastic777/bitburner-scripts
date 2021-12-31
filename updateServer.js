@@ -1,6 +1,5 @@
 const WebSocket = require("ws")
 const fs = require("fs")
-const rra = require("recursive-readdir-async")
 const chokidar = require("chokidar")
 
 const PORT = process.env.PORT ?? 8080
