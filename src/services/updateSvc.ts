@@ -20,17 +20,29 @@ type FileDeletion = {
 type FileEvent = FileCreation | FileUpdate | FileDeletion
 
 let messagesQueue: FileEvent[] = []
+let started = false;
 
 export async function main(ns: NS) {
     let updateServer = new WebSocket("ws://127.0.0.1:8080")
 
-    updateServer.onmessage = async (event) => {
+    updateServer.onerror = () => {
+        ns.toast("Update server connection error.", "error")
+    }
+
+    updateServer.onmessage = async event => {
         let fileEvent: FileEvent = JSON.parse(event.data)
 
         messagesQueue.push(fileEvent)
 
-        if (fileEvent.eventType === "update" || fileEvent.eventType === "creation") {
+        if (fileEvent.eventType === "creation" || fileEvent.eventType === "update") {
             await ns.write(fileEvent.name, [fileEvent.contents], "w")
+        }
+
+        if (fileEvent.eventType === "update") {
+            if (fileEvent.name === ns.getScriptName()) {
+                ns.toast("Updater updated. Restarting.", "warning")
+                ns.spawn(ns.getScriptName())
+            }
         }
 
         if (fileEvent.eventType === "deletion") {
@@ -39,6 +51,7 @@ export async function main(ns: NS) {
     }
 
     updateServer.onclose = () => {
+        ns.toast("Disconnected from update server.", "warning")
         ns.exit()
     }
 
