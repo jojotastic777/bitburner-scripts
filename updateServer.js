@@ -1,6 +1,7 @@
 const WebSocket = require("ws")
 const fs = require("fs")
 const rra = require("recursive-readdir-async")
+const chokidar = require("chokidar")
 
 const PORT = process.env.PORT ?? 8080
 
@@ -14,6 +15,11 @@ server.on("listening", () => {
 
 let sockets = []
 
+function processFilename(filename) {
+    let newFilename = filename.replaceAll("\\", "").slice(4)
+    return newFilename[0] === "/" && !newFilename.slice(1).includes("/") ? newFilename.slice(1) : newFilename
+}
+
 server.on("connection", (socket) => {
     sockets.push(socket)
 
@@ -24,14 +30,17 @@ server.on("connection", (socket) => {
     })
 
     socket.on("close", (msg) => {
+        console.log(`Client Disconnected: ${socket._socket.remoteAddress}`)
         sockets = sockets.filter(s => s !== socket)
     })
 
-    rra.list("./dist").then(data => {
-        let message = {}
 
-        data.map(f => f.fullname).forEach(path => message[path] = fs.readFileSync(path))
-
-        socket.send(JSON.stringify(message))
-    })
+    const updateFile = file => socket.send(JSON.stringify({ eventType: "update", name: processFilename(file), contents: fs.readFileSync(file).toString() }))
+    const createFile = file => socket.send(JSON.stringify({ eventType: "creation", name: processFilename(file), contents: fs.readFileSync(file).toString() }))
+    const deleteFile = file => socket.send(JSON.stringify({ eventType: "deletion", name: processFilename(file) }))
+    chokidar.watch("./dist").on("add", createFile).on("change", updateFile).on("unlink", deleteFile)
 })
+
+// chokidar.watch("./dist").on("all", (eventType, file) => {
+//     console.log(eventType, file)
+// })
