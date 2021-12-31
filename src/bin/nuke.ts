@@ -13,7 +13,7 @@ const ARGS: Argument[] = [
 const USAGE = buildUsageString("nuke", FLAGS, ARGS)
 
 export async function main(ns: NS) {
-    let flags: { _: string[] , help: boolean } = { _: [], help: false }
+    let flags: { _: string[], help: boolean } = { _: [], help: false }
     try {
         flags = ns.flags(buildNetscriptFlagsArray(FLAGS))
     } catch (e) {
