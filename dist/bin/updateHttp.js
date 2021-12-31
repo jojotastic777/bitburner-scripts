@@ -52,6 +52,7 @@ export async function main(ns) {
         logger.debug(`${path}:\n${item}`);
         await ns.write(path, [item]);
         logger.info(`Fetched '${path}' from '${url}'.`);
+        totalDownloaded++;
     }
     logger.info(`Update ${totalDownloaded === Object.keys(manifest).length ? "successful" : "failed"}. Fetched ${totalDownloaded}/${Object.keys(manifest).length} files.`);
 }
