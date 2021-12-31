@@ -35,6 +35,10 @@ export async function main(ns: NS) {
 
         if (fileEvent.eventType === "creation" || fileEvent.eventType === "update") {
             await ns.write(fileEvent.name, [fileEvent.contents], "w")
+
+            if (ns.getHostname() !== "home") {
+                await ns.scp(fileEvent.name, ns.getHostname(), "home")
+            }
         }
 
         if (fileEvent.eventType === "update") {
@@ -46,6 +50,10 @@ export async function main(ns: NS) {
 
         if (fileEvent.eventType === "deletion") {
             ns.rm(fileEvent.name)
+
+            if (ns.getHostname() !== "home") {
+                ns.rm(fileEvent.name, "home")
+            }
         }
     }
 
