@@ -44,7 +44,7 @@ export function buildUsageString(name: string, flags: Flag[], args: Argument[]):
     let longestFlagDesc = flags.map(flag => flag.description.length).reduce((acc, cur) => Math.max(acc, cur))
 
     return [
-        `Usage ${name} [options...] ${args.map(arg => `${arg.optional ? "[" : "<"}${arg.name}${arg.optional ? "]" : ">"}`).join(" ")}`,
+        `Usage: ${name} [options...] ${args.map(arg => `${arg.optional ? "[" : "<"}${arg.name}${arg.optional ? "]" : ">"}`).join(" ")}`,
         ...flags.map(flag => `  --${flag.name.padEnd(longestFlagName, " ")} ${flag.description.padEnd(longestFlagDesc, " ")}`)
     ].join("\n")
 }
