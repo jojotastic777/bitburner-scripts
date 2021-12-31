@@ -25,7 +25,7 @@ export async function syncFile(ns: NS, file: string, sourceHost: string, destina
 
 type ScriptArg = string | number | boolean
 
-type ExecFailure = "NO_HOST" | "NOT_ROOT" | "INVALID_THREADS" | "UNKNOWN_EXEC_ERROR" | SyncFileFailure
+type ExecFailure = "NO_HOST" | "NOT_ROOT" | "ALREADY_RUNNING" | "INVALID_THREADS" | "UNKNOWN_EXEC_ERROR" | SyncFileFailure
 type ExecSuccess = "OK"
 type ExecStatus  = { status: ExecFailure | ExecSuccess, script: string, host: string, threads: number, args: ScriptArg[] }
 
@@ -36,6 +36,10 @@ export async function exec(ns: NS, script: string, host: string, threads: number
 
     if (!ns.hasRootAccess(host)) {
         return { status: "NOT_ROOT", script, host, threads, args }
+    }
+
+    if (ns.scriptRunning(script, host)) {
+        return { status: "ALREADY_RUNNING", script, host, threads, args }
     }
 
     if (threads < 1) {
@@ -73,7 +77,7 @@ export async function deploy(ns: NS, deployment: Deployment): Promise<DeployStat
     const SERVERS = scan(ns)
     const AVAIL_SERVERS = SERVERS
         .map(srv => ns.getServer(srv))
-        .filter(srv => srv.hasAdminRights && ns.getScriptRam(script) <= srv.maxRam - srv.ramUsed && srv.hostname !== "home")
+        .filter(srv => srv.hasAdminRights && ns.getScriptRam(script) <= srv.maxRam - srv.ramUsed && !ns.scriptRunning(script, srv.hostname) && srv.hostname !== "home")
         .sort((a, b) => a.maxRam - b.maxRam)
     
     if (AVAIL_SERVERS.length === 0) {
