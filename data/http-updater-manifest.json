@@ -1,0 +1,7 @@
+{
+    "/bin/updateHttp.js":  "https://raw.githubusercontent.com/jojotastic777/bitburner-scripts/main/dist/bin/updateHttp.js",
+    "/lib/global.js":      "https://raw.githubusercontent.com/jojotastic777/bitburner-scripts/main/dist/lib/global.js",
+    "/lib/log.js":         "https://raw.githubusercontent.com/jojotastic777/bitburner-scripts/main/dist/lib/log.js",
+    "/lib/usage.js":       "https://raw.githubusercontent.com/jojotastic777/bitburner-scripts/main/dist/lib/usage.js",
+    "/services/logSvc.js": "https://raw.githubusercontent.com/jojotastic777/bitburner-scripts/main/dist/services/logSvc.js"
+}
