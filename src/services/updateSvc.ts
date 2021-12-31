@@ -20,7 +20,6 @@ type FileDeletion = {
 type FileEvent = FileCreation | FileUpdate | FileDeletion
 
 let messagesQueue: FileEvent[] = []
-let started = false;
 
 export async function main(ns: NS) {
     let updateServer = new WebSocket("ws://127.0.0.1:8080")
