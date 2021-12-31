@@ -1,11 +1,11 @@
-# bitburner-scripts
+# jojotastic777's Bitburner Scripts
 Scripts for the game Bitburner. Play Bitburner here: https://danielyxie.github.io/bitburner/
 
 Of particular note is the WebSocket-based script updater.
 
 You'll need to complie the typescript yourself.
 
-To use this repository:
+To use the scripts in this repository:
 1. Clone the respository.
 2. Run `yarn build`.
 3. Copy the resulting `updateSvc.js` file from `dist/services/updateSvc.js` into the in-game file `/services/updateSvc.js`.
