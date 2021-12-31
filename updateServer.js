@@ -3,13 +3,15 @@ const fs = require("fs")
 const chokidar = require("chokidar")
 
 const PORT = process.env.PORT ?? 8080
+const HOST = process.env.LISTEN_HOST ?? "127.0.0.1"
 
 const server = new WebSocket.Server({
-    port: PORT
+    port: PORT,
+    host: HOST
 })
 
 server.on("listening", () => {
-    console.log(`Listening on port ${PORT}.`)
+    console.log(`Listening on port ${HOST}:${PORT}.`)
 })
 
 let sockets = []
