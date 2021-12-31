@@ -27,5 +27,11 @@ server.on("connection", (socket) => {
         sockets = sockets.filter(s => s !== socket)
     })
 
-    rra.list("./dist").then(res => socket.send(JSON.stringify(res.map(f => ({ [fs.readFileSync(f.fullname)]: f.fullname })))))
+    rra.list("./dist").then(data => {
+        let message = {}
+
+        data.map(f => f.fullname).forEach(path => message[path] = fs.readFileSync(path))
+
+        socket.send(JSON.stringify(message))
+    })
 })
