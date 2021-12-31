@@ -8,7 +8,7 @@ const FLAGS: Flag[] = [
 
 const ARGS: Argument[] = []
 
-const USAGE = buildUsageString("deploy", FLAGS, ARGS)
+const USAGE = buildUsageString("startup", FLAGS, ARGS)
 
 export async function main(ns: NS) {
     let flags: { _: string[], help: boolean } = { _: [], help: false }
