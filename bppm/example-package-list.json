@@ -1,0 +1,13 @@
+[
+    {
+        "name": "websocket-file-updater",
+        "description": "A WebSocket-based file/script updater for Bitburner.",
+        "version": "v1.0.0",
+        "author": "jojotastic777@gmail.com",
+        "packageUrl": "Will add momentarily.",
+        "dependencies": [],
+        "manifest": {
+            "/services/updateSvc.js": "Will add momentarily."
+        }
+    }
+]
