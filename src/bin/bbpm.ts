@@ -69,6 +69,10 @@ type InstallPackageFailure = "PACKAGE_NOT_FOUND"
 type InstallPackageSuccess = "OK"
 type InstallPackageStatus  = { status: InstallPackageFailure | InstallPackageSuccess, packageName: string }
 
+function normalizeFilename(filename: string): string {
+    return filename[0] === "/" && !filename.slice(1).includes("/") ? filename.slice(1) : filename
+}
+
 async function installPackage(ns: NS, packageName: string, packageList: PackageList): Promise<InstallPackageStatus> {
     let pkg = packageList.find(p => p.name === packageName)
 
@@ -89,7 +93,7 @@ async function installPackage(ns: NS, packageName: string, packageList: PackageL
     for (let fileName of Object.keys(pkg.manifest)) {
         let fileUrl = pkg.manifest[fileName]
 
-        let wgetStatus = await ns.wget(fileUrl, fileName)
+        let wgetStatus = await ns.wget(fileUrl, normalizeFilename(fileName))
         
         if (wgetStatus) {
             ns.tprintf(`Successfully downloaded ${fileName} from ${fileUrl}`)
