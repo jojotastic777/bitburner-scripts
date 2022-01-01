@@ -44,4 +44,13 @@ export async function main(ns: NS) {
     })
 
     ns.tprintf(`Nuker Service: ${JSON.stringify(nukeSvcDeployment)}`)
+
+    let hacknetSvcDeployment = await deploy(ns, {
+        script: "/services/hacknetSvc.js",
+        threads: 1,
+        args: [],
+        dependencies: []
+    })
+
+    ns.tprintf(`Hacknet Service: ${JSON.stringify(hacknetSvcDeployment)}`)
 }
