@@ -6,7 +6,7 @@
         "author": "jojotastic777@gmail.com",
         "dependencies": [],
         "manifest": {
-            "/services/updateSvc.js": "https://github.com/jojotastic777/bitburner-scripts/raw/main/bppm/example-package-script.js"
+            "/services/updateSvc.js": "https://raw.githubusercontent.com/jojotastic777/bitburner-scripts/main/bppm/example-package-script.js"
         }
     }
 ]
