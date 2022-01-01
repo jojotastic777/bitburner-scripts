@@ -61,7 +61,7 @@ function printPackage(pkg: Package) {
         `Dependencies:`,
         pkg.dependencies.map(dep => `    ${dep}`).join("\n"),
         `Manifest:`,
-        Object.keys(pkg.manifest).map(file => `    ${file}: ${pkg.manifest[file]}`)
+        Object.keys(pkg.manifest).map(file => `    ${file}: ${pkg.manifest[file]}`).join("\n")
     ].join("\n")
 }
 
