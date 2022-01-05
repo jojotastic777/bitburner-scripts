@@ -53,4 +53,13 @@ export async function main(ns: NS) {
     })
 
     ns.tprintf(`Hacknet Service: ${JSON.stringify(hacknetSvcDeployment)}`)
+
+    let hackOrchSvcDeployment = await deploy(ns, {
+        script: "/services/hackOrchSvc.js",
+        threads: 1,
+        args: [],
+        dependencies: []
+    })
+
+    ns.tprintf(`Hacking Orchestration Service: ${JSON.stringify(hackOrchSvcDeployment)}`)
 }
