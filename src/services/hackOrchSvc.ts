@@ -14,6 +14,8 @@ export async function main(ns: NS) {
         hackHosts      = hackHosts.concat(ns.getPurchasedServers())
         // Ensure all servers in hackHosts actually exist and have root access.
         hackHosts      = hackHosts.filter(host => ns.serverExists(host) && ns.hasRootAccess(host))
+        // Deduplicate hackHosts.
+        hackHosts      = [ ...new Set(hackHosts) ]
         let hackTarget = ns.read(HACK_TARGET_PATH) as string
         let missingHosts = hackHosts.filter(host => !ns.serverExists(host))
         if (missingHosts.length > 0) {
