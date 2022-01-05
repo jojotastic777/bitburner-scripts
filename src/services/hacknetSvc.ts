@@ -1,6 +1,7 @@
 import { NodeStats, NS } from "/../NetscriptDefinitions.js";
 
-const HACKNET_BUDGET_QUOTIENT = 1.0
+const HACKNET_DEFAULT_BUDGET_QUOTIENT = 1.0
+const HACKNET_BUDGET_QUOTIENT_PATH = "/etc/hacknetSvc/budget_quotient.txt"
 
 type ExtendedHacknetNode = NodeStats & {
     id: number
@@ -36,7 +37,15 @@ export async function main(ns: NS) {
     const MAX_NODES = ns.hacknet.maxNumNodes()
 
     while (true) {
+        await ns.scp(HACKNET_BUDGET_QUOTIENT_PATH, "home", ns.getHostname())
+        let budgetQuotient = parseFloat(ns.read(HACKNET_BUDGET_QUOTIENT_PATH))
+
+        if (Number.isNaN(budgetQuotient)) {
+            budgetQuotient = HACKNET_DEFAULT_BUDGET_QUOTIENT
+        }
+
         const NODES = getHacknetNodes(ns)
+        const MONEY_AVAIL = ns.getServerMoneyAvailable("home")
 
         let costs: HacknetPurchase[] = NODES.map(node => [
             { type: "level", cost: node.levelCost, buy: (ns: NS) => { ns.toast("Purchased Hacknet Level.", "info"); return ns.hacknet.upgradeLevel(node.id, 1) } },
@@ -49,7 +58,7 @@ export async function main(ns: NS) {
         }
 
         costs
-            .filter(c => c.cost <= ns.getServerMoneyAvailable("home") * HACKNET_BUDGET_QUOTIENT)
+            .filter(c => c.cost <= MONEY_AVAIL * budgetQuotient)
             .sort((a, b) => a.cost - b.cost)[0]
             ?.buy(ns)
 
