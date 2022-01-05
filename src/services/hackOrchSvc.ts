@@ -1,4 +1,5 @@
 import { NS } from "/../NetscriptDefinitions.js";
+import { scan } from "/lib/scan.js";
 
 const HACK_HOSTS_PATH  = "/etc/hackOrchSvc/hack_hosts.txt"
 const HACK_TARGET_PATH = "/etc/hackOrchSvc/hack_target.txt"
@@ -12,6 +13,8 @@ export async function main(ns: NS) {
         let hackHosts  = (ns.read(HACK_HOSTS_PATH) as string).split("\n").filter(str => str !== "")
         // Add purchased servers to hackHosts.
         hackHosts      = hackHosts.concat(ns.getPurchasedServers())
+        // Add most other servers.
+        hackHosts      = scan(ns).filter(host => ns.getServerMaxRam(host) > 8 && host !== "home")
         // Ensure all servers in hackHosts actually exist and have root access.
         hackHosts      = hackHosts.filter(host => ns.serverExists(host) && ns.hasRootAccess(host))
         // Deduplicate hackHosts.

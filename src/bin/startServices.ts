@@ -54,15 +54,6 @@ export async function main(ns: NS) {
 
     ns.tprintf(`Hacknet Service: ${JSON.stringify(hacknetSvcDeployment)}`)
 
-    let hackOrchSvcDeployment = await deploy(ns, {
-        script: "/services/hackOrchSvc.js",
-        threads: 1,
-        args: [],
-        dependencies: []
-    })
-
-    ns.tprintf(`Hacking Orchestration Service: ${JSON.stringify(hackOrchSvcDeployment)}`)
-
     let rackspaceSvcDeployment = await deploy(ns, {
         script: "/services/rackspaceSvc.js",
         threads: 1,
@@ -71,4 +62,27 @@ export async function main(ns: NS) {
     })
 
     ns.tprintf(`Rackspace Service: ${JSON.stringify(rackspaceSvcDeployment)}`)
+
+    let ramGuiSvcDeployment = await deploy(ns, {
+        script: "/services/ramGuiSvc.js",
+        threads: 1,
+        args: [
+            "/lib/gui.js",
+            "/lib/scan.js"
+        ],
+        dependencies: []
+    })
+
+    ns.tprintf(`RAM Gui Service: ${JSON.stringify(ramGuiSvcDeployment)}`)
+
+    let hackOrchSvcDeployment = await deploy(ns, {
+        script: "/services/hackOrchSvc.js",
+        threads: 1,
+        args: [],
+        dependencies: [
+            "/lib/scan.js"
+        ]
+    })
+
+    ns.tprintf(`Hacking Orchestration Service: ${JSON.stringify(hackOrchSvcDeployment)}`)
 }
