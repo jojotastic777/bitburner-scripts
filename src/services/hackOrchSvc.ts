@@ -10,6 +10,7 @@ export async function main(ns: NS) {
         await ns.scp(HACK_HOSTS_PATH, "home", ns.getHostname())
         await ns.scp(HACK_TARGET_PATH, "home", ns.getHostname())
         let hackHosts  = (ns.read(HACK_HOSTS_PATH) as string).split("\n").filter(str => str !== "")
+        hackHosts      = hackHosts.concat(ns.getPurchasedServers())
         let hackTarget = ns.read(HACK_TARGET_PATH) as string
         let missingHosts = hackHosts.filter(host => !ns.serverExists(host))
         if (missingHosts.length > 0) {
