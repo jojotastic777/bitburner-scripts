@@ -36,6 +36,6 @@ export async function main(ns: NS) {
 
     ns.tprintf(`\n`)
     ns.tprintf(`Total Servers:               ${SERVERS.length}`)
-    ns.tprintf(`Servers With Root Access:    ${SERVERS.filter(srv => srv.hasAdminRights).length}/${SERVERS.length}`)
-    ns.tprintf(`Servers Without Root Access: ${SERVERS.filter(srv => !srv.hasAdminRights).length}/${SERVERS.length}`)
+    ns.tprintf(`Servers With Root Access:    ${SERVERS.filter(srv => srv.hasAdminRights).length}/${SERVERS.length } (${(SERVERS.filter(srv => srv.hasAdminRights).length / SERVERS.length * 100).toFixed(2) }%%)`)
+    ns.tprintf(`Servers Without Root Access: ${SERVERS.filter(srv => !srv.hasAdminRights).length}/${SERVERS.length} (${(SERVERS.filter(srv => !srv.hasAdminRights).length / SERVERS.length * 100).toFixed(2)}%%)`)
 }
