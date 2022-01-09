@@ -1,4 +1,4 @@
-import { NS } from "/../NetscriptDefinitions.js";
+import { NS } from "bitburner";
 
 const UPDATER_URL      = "https://gist.github.com/jojotastic777/bb86fd11b0ae60eaa0dcf99a0f0cfd5f/raw/e7401407a180e27e2a0331ce4d8a460d73bc68e7/bitburner-wsUpdater-bootstrap.js"
 const UPDATER_FILENAME = "/bin/svc/wsUpdater.js"

@@ -1,4 +1,4 @@
-import { NS } from "/../NetscriptDefinitions.js";
+import { NS } from "bitburner";
 import { UpdateMessage } from "/common/UpdateMessage.js";
 
 const CONFIG_PATH: string = "/etc/svc/wsUpdater/config.txt"
