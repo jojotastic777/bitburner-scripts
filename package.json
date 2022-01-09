@@ -2,12 +2,6 @@
   "name": "bitburner-scripts",
   "version": "2.0.0",
   "description": "Scripts for the game Bitburner. Play Bitburner here: https://danielyxie.github.io/bitburner/",
-  "scripts": {
-    "build": "tsc",
-    "watch": "tsc --watch",
-    "defs": "wget https://github.com/danielyxie/bitburner/raw/dev/src/ScriptEditor/NetscriptDefinitions.d.ts -O NetscriptDefinitions.d.ts",
-    "clean": "rm -rf ./dist/*"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jojotastic777/bitburner-scripts.git"
