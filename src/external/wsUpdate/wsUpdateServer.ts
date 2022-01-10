@@ -1,7 +1,7 @@
 import { WebSocketServer } from "ws"
 import chokidar from "chokidar"
 import fs from "fs"
-import { UpdateMessage } from "/common/UpdateMessage.js"
+import { UpdateMessage } from "/../common/UpdateMessage.js"
 
 const PORT: number = parseInt(process.env.PORT ?? "8080")
 

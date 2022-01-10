@@ -18,9 +18,9 @@
     "outDir": "dist/",
     "baseUrl": "src/",
     "paths": {
-      "/*.js": [ "*" ],
-      "*.js": [ "*" ],
-      "bitburner": [ "../NetscriptDefinitions.d.ts" ]
+      "/*.js": [ "bitburner/*" ],
+      "*.js": [ "bitburner/*" ],
+      "bitburner": [ "../@types/NetscriptDefinitions.d.ts" ]
     }
   }
 }

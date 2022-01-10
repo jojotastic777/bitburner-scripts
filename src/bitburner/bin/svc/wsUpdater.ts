@@ -1,9 +1,21 @@
+/**
+ * A Bitburner script which connects to a compatible update server and responds appropriately whenever an update is pushed.
+ * 
+ * Usage: `run /bin/svc/wsUpdater.js`
+ * @module
+ */
+
 import { NS } from "bitburner";
-import { UpdateMessage } from "/common/UpdateMessage.js";
+import { UpdateMessage } from "/../common/UpdateMessage.js";
 
 const CONFIG_PATH: string = "/etc/svc/wsUpdater/config.txt"
 
-type UpdaterConfig = {
+/**
+ * An object representing all the options available to configure the updater.
+ * 
+ * Configuration is read from `/etc/svc/wsUpdater/config.txt`.
+ */
+export type UpdaterConfig = {
     serverUrl: string
 }
 
@@ -64,6 +76,10 @@ async function writeFile(ns: NS, filename: string, data: string, allowRestart: b
 
 let messageQueue: UpdateMessage[] = []
 
+/**
+ * The main function, called whenever the script is run.
+ * @param ns A Netscript context.
+ */
 export async function main(ns: NS): Promise<void> {
     // Disable extranious logging.
     ns.disableLog("ALL")

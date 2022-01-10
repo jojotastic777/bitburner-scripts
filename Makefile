@@ -1,5 +1,8 @@
 build:
-	tsc
+	npx tsc
+
+gen-docs:
+	npx typedoc --entryPointStrategy expand ./src
 
 watch:
 	tsc --watch
