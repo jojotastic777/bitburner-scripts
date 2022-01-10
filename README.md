@@ -1,7 +1,7 @@
 # jojotastic777's Bitburner Scripts
 Scripts for the game Bitburner. Play Bitburner here: https://danielyxie.github.io/bitburner/
 
-Of particular note is the WebSocket-based script updater.
+Documentation for the scripts and libraries found herein can be found [here.](https://jojotastic777.github.io/bitburner-scripts/)
 
 To use the scripts in this repository:
 1. Clone the respository.
