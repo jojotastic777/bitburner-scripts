@@ -15,4 +15,4 @@ clean:
 
 setup-env:
 	yarn install --dev
-	curl https://github.com/danielyxie/bitburner/raw/dev/src/ScriptEditor/NetscriptDefinitions.d.ts -o NetscriptDefinitions.d.ts
+	curl https://github.com/danielyxie/bitburner/raw/dev/src/ScriptEditor/NetscriptDefinitions.d.ts -o @types/NetscriptDefinitions.d.ts
