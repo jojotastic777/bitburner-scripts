@@ -17,7 +17,6 @@ export async function main(ns: NS): Promise<void> {
         .flatMap(host => ns.ps(host).map(proc => ({ host, ...proc })) )
 
     PROCESSES.forEach(proc => {
-        // @ts-expect-error
         ns.kill(proc.pid)
         ns.tprintf(`Killed process ${proc.filename}[${proc.args?.map(arg => JSON.stringify(arg)).join(", ")}]@${proc.host} (PID - ${proc.pid})`)
     })
