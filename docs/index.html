@@ -4,14 +4,13 @@
 </a>
 <p>Scripts for the game Bitburner. Play Bitburner here: <a href="https://danielyxie.github.io/bitburner/">https://danielyxie.github.io/bitburner/</a></p>
 <p>Of particular note is the WebSocket-based script updater.</p>
-<p>You&#39;ll need to complie the typescript yourself.</p>
 <p>To use the scripts in this repository:</p>
 <ol>
 <li>Clone the respository.</li>
-<li>Run <code>yarn build</code>.</li>
-<li>Copy the resulting <code>updateSvc.js</code> file from <code>dist/services/updateSvc.js</code> into the in-game file <code>/services/updateSvc.js</code>.</li>
-<li>Start the update server with <code>yarn serve</code>.</li>
-<li>Run the <code>/services/updateSvc.js</code> script in-game.</li>
+<li>Run <code>make setup-env</code>.</li>
+<li>Run <code>make serve-updates</code>.</li>
+<li>Download <a href="https://gist.github.com/jojotastic777/bb86fd11b0ae60eaa0dcf99a0f0cfd5f/raw/6f0e4861c919d5c8ca0f4f8b45152bc130297dda/bitburner-bootstrap.js">this script</a> to the file <code>/bin/util/bootstrap.js</code> in Bitburner.</li>
 </ol>
-<p>After you&#39;ve done these steps, the updater should automatically copy the rest of the scripts in <code>dist/</code>. I recommend using <code>yarn watch</code> to update the contents of <code>dist/</code> whenever you change something in <code>src/</code>.</p>
+<p>After you&#39;ve done these steps, the updater service should automatically download the rest of the scripts from <code>dist/bitburner</code>.</p>
+<p>I recommend using <code>make watch</code> to update the contents of <code>dist/</code> whenever you change something in <code>src/</code>.</p>
 </div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Modules</a></li><li class=" tsd-kind-module"><a href="modules/bitburner_bin_simple_grow.html">bitburner/bin/simple/grow</a></li><li class=" tsd-kind-module"><a href="modules/bitburner_bin_simple_hack.html">bitburner/bin/simple/hack</a></li><li class=" tsd-kind-module"><a href="modules/bitburner_bin_simple_weaken.html">bitburner/bin/simple/weaken</a></li><li class=" tsd-kind-module"><a href="modules/bitburner_bin_svc_hwgMan.html">bitburner/bin/svc/hwg<wbr/>Man</a></li><li class=" tsd-kind-module"><a href="modules/bitburner_bin_svc_wsUpdater.html">bitburner/bin/svc/ws<wbr/>Updater</a></li><li class=" tsd-kind-module"><a href="modules/bitburner_bin_util_bootstrap.html">bitburner/bin/util/bootstrap</a></li><li class=" tsd-kind-module"><a href="modules/bitburner_bin_util_carpetbomb.html">bitburner/bin/util/carpetbomb</a></li><li class=" tsd-kind-module"><a href="modules/bitburner_bin_util_deepkill.html">bitburner/bin/util/deepkill</a></li><li class=" tsd-kind-module"><a href="modules/bitburner_lib_deploy.html">bitburner/lib/deploy</a></li><li class=" tsd-kind-module"><a href="modules/bitburner_lib_exec.html">bitburner/lib/exec</a></li><li class=" tsd-kind-module"><a href="modules/bitburner_lib_nuke.html">bitburner/lib/nuke</a></li><li class=" tsd-kind-module"><a href="modules/bitburner_lib_scan.html">bitburner/lib/scan</a></li><li class=" tsd-kind-module"><a href="modules/common_UpdateMessage.html">common/<wbr/>Update<wbr/>Message</a></li></ul></nav></div></div></div><footer class="with-border-bottom"><div class="container"><h2>Legend</h2><div class="tsd-legend-group"><ul class="tsd-legend"><li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li><li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li></ul></div><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="container tsd-generator"><p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div><div class="overlay"></div><script src="assets/main.js"></script></body></html>
