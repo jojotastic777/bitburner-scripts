@@ -107,4 +107,4 @@ dist
 .vscode
 
 # Netscript Definitions
-@types/NetscriptDefintions.d.ts
+@types/NetscriptDefinitions.d.ts
