@@ -2,6 +2,8 @@
  * A Bitburner script which manages the deployment of `hack`, `weaken`, and `grow` scripts.
  * 
  * Usage: `run /bin/svc/hwgMan.js`
+ * 
+ * ***NOT YET IMPLEMENTED.***
  * @module
  */
 
