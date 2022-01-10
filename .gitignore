@@ -105,3 +105,6 @@ dist
 
 # VSCode Settings
 .vscode
+
+# Netscript Definitions
+@types/NetscriptDefintions.d.ts
